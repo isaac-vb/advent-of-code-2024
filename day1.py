@@ -9,28 +9,17 @@ input= read_input("day1input.txt")
 #Part 1
 list_one = sorted([l[0] for l in input])
 list_two = sorted([l[1] for l in input])
-
 compared_lists = list(zip(list_one,list_two))
+total = sum(abs(l[1]-l[0]) for l in compared_lists)
 
-sum = 0
-for l in compared_lists:
-    sum += abs(l[1]-l[0])
-print(f"Part 1 Answer: {sum}")
+print(f"Part 1 Answer: {total}")
 
 
 #Part 2
 from collections import Counter
 list_two_counts_dict =Counter(list_two)
-sum = 0
-for l in list_one:
-    sum += l*list_two_counts_dict.get(l,0)
-print(f"Part 2 Answer: {sum}")
+total = sum(l*list_two_counts_dict.get(l,0) for l in list_one)
 
-
-
-
-
-
-
+print(f"Part 2 Answer: {total}")
 
 
